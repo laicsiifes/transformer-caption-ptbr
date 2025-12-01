@@ -1,41 +1,3 @@
-<div align="center">
-  <h1> Transformer-Based Vision Encoder-Decoder (VED) Models for Brazilian Portuguese Image Captioning </h1>
-  <p>By Computational Intelligence and Information Systems Laboratory (LAICSI-IFES)</p>
-</div>
-
-<div align="center">
- <img src='/images/dog-image-captioning.png' width='800'>
-</div>
-
-<br>
-
-**Open-stuff available in**
-- :floppy_disk: [Flickr30K Portuguese dataset (translated with Google Translator API)](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br)
-- :1st_place_medal: [Swin-DistilBERTimbau (1st place model in Flickr30K Portuguese)](https://huggingface.co/laicsiifes/swin-distilbertimbau)
-- :2nd_place_medal: [Swin-GPorTuguese-2 (2nd place model in Flickr30K Portuguese)](https://huggingface.co/laicsiifes/swin-gportuguese-2)
-
-**or access our** [publicly available collection](https://huggingface.co/collections/laicsiifes/vision-encoder-decoder-brazilian-portuguese-image-captioning-66d6280c9e7dbd3be32d2770)
-
-**or access the** [project page](https://gabrielmotablima.github.io/ved-transformer-caption-ptbr/index.html).
- 
-### :wrench: To set up the environment, use:
-```bash
-$ chmod +x setup.sh
-$ ./setup.sh
-```
-
-### :gear: To run the complete train and evaluate, use:
-```bash
-$ python train.py
-```
-
-### :gear: To run only the evaluation, use:
-```bash
-$ python eval.py
-```
-
-### :wrench: Don't forget of setting up the training/model attributes in ```config.yml```. An example:
-```yaml
 ##########################################################
 ################### 1. GENERAL CONFIGS ###################
 ##########################################################
@@ -45,6 +7,30 @@ config:
   # use the abbreviations of the 4th section of this file
   encoder: "deit-base-224"
   decoder: "bert-base"
+
+  # encoder: "deit-base-224"
+  # decoder: "distilbert-base"
+
+  # encoder: "deit-base-224"
+  # decoder: "gpt2-small"
+
+  # encoder: "swin-base-224"
+  # decoder: "bert-base"
+
+  # encoder: "swin-base-224"
+  # decoder: "distilbert-base"
+
+  # encoder: "swin-base-224"
+  # decoder: "gpt2-small"
+
+  # encoder: "vit-base-224"
+  # decoder: "bert-base"
+
+  # encoder: "vit-base-224"
+  # decoder: "distilbert-base"
+
+  # encoder: "vit-base-224"
+  # decoder: "gpt2-small"
 
   # dataset for training and evaluation
   dataset: "flickr30k_pt_human_generated"
@@ -192,44 +178,3 @@ dataset:
     image_column: "image"
     text_column: "text"
     text_per_image: 1
-```
-
-### 🗃️ Directory structure:
-```
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   └── pracegover_63k     <- Dataset #PraCegoVer 63k
-│       ├── test.hf        <- Data for testing split.
-│       ├── train.hf       <- Data for training split.
-│       └── validation.hf  <- Data for validation split.
-│
-├── docs               <- A default HTML for docs.
-│
-├── models             <- The models and its artifacts will be saved here.
-│
-├── requirements.txt   <- The requirements file for reproducing the training and evaluation pipelines.
-│
-└── src                <- Source code for use in this project.
-    ├── __init__.py    <- Makes src a Python module
-    │
-    ├── utils          <- Modularization for configuration, splits processing and evaluation metrics.
-    │   ├── config.py
-    │   ├── data_processing.py
-    │   └── metrics.py
-    │
-    ├── eval.py
-    └── train.py
-```
-
-### 📋 BibTex entry and citation info
-
-```bibtex
-@inproceedings{bromonschenkel2024comparative,
-  title={A Comparative Evaluation of Transformer-Based Vision Encoder-Decoder Models for Brazilian Portuguese Image Captioning},
-  author={Bromonschenkel, Gabriel and Oliveira, Hil{\'a}rio and Paix{\~a}o, Thiago M},
-  booktitle={2024 37th SIBGRAPI Conference on Graphics, Patterns and Images (SIBGRAPI)},
-  pages={1--6},
-  year={2024},
-  organization={IEEE}
-}
-```

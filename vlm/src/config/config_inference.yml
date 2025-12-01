@@ -1,0 +1,137 @@
+##########################################################
+################### 1. GENERAL CONFIGS ###################
+##########################################################
+
+config:
+  # multimodal large language model
+  model_name: "llama3-vision-unsloth"
+  # model_name: "phi3-vision"
+  # model_name: "paligemma"
+  # model_name: "vitucano-1b" # In progress...
+  # model_name: "llama3-vision-90B-API"
+
+  # dataset for training and evaluation
+  dataset: "flickr30k_pt"
+  # dataset: "flickr30k_pt_human_generated"
+  # dataset: "pracegover_63k"
+
+  # dataset for testing
+  # it works only for eval.py. It has no effect in train.py, since the model is always
+  # evaluated using the config.dataset
+  test_dataset: "flickr30k_pt"
+  # test_dataset: "flickr30k_pt_human_generated"
+
+  # dataset from hub
+  dataset_from_hub: True
+
+  # flag to inference.py, if True it evaluate using the model
+  # else it evaluate using the predictions previously saved after training
+  evaluate_from_model: True
+
+  # flag to turn off the computer after the training
+  turn_off_computer: False
+
+  # True to save with suffix -ft, False to save without. Don't change.
+  use_adapters: False
+
+
+##########################################################
+################# 2. GENERATION CONFIGS ##################
+##########################################################
+
+generate_args:
+  # temperature": 0.0
+  # do_sample": False
+  # num_beams: 5 # default 5
+  # no_repeat_ngram_size: 0 # default 0
+  # early_stopping: False # default False
+  # max_length: 25 # default 20
+  max_new_tokens: "auto" # automatically set by dataset max_length
+
+
+##########################################################
+#################### 3. MODELS CONFIGS ###################
+##########################################################
+
+mllm:
+  # LlaMa 3.2 Vision Unsloth
+  llama3-vision-unsloth:
+    id: "unsloth/Llama-3.2-11B-Vision-Instruct"
+    batch_size: 1
+    use_flash_attention: False
+    question: "Escreva uma descrição em português do Brasil para a imagem com no máximo {max_length} palavras."
+
+
+  # LlaMa 3.2 Vision
+  llama3-vision:
+    id: "meta-llama/Llama-3.2-11B-Vision-Instruct"
+    batch_size: 1
+    use_flash_attention: False
+    question: "Escreva uma descrição em português do Brasil para a imagem com no máximo {max_length} palavras."
+
+  # Phi-3 Vision
+  phi3-vision:
+    id: "microsoft/Phi-3-vision-128k-instruct"
+    batch_size: 1
+    use_flash_attention: False
+    question: "Escreva uma descrição em português do Brasil para a imagem com no máximo {max_length} palavras."
+
+  # PaliGemma
+  paligemma:
+    id: "google/paligemma-3b-pt-224"
+    batch_size: 1
+    use_flash_attention: False
+    question: "caption pt\n" # by model authors
+
+  # LlaMa 3.2 Vision
+  llama3-vision-90B-API:
+    id: "Llama-3.2-90B-Vision-Instruct"
+    batch_size: 1
+    use_flash_attention: False
+    question: "Escreva uma descrição em português do Brasil para a imagem com no máximo {max_length} palavras."
+
+  # ViTucano 1B
+  vitucano-1b:
+    id: "TucanoBR/ViTucano-1b5-v1"
+    batch_size: 1
+    use_flash_attention: False
+    question: "Escreva uma descrição em português do Brasil para a imagem com no máximo {max_length} palavras."
+
+##########################################################
+############## 4. IMAGE CAPTIONING DATASETS ##############
+##########################################################
+
+dataset:
+  # Flickr30K randomly sampled with 5k
+  flickr30k_pt:
+    id: "laicsiifes/flickr30k-pt-br-5k"
+    max_length: 25
+    image_column: "image"
+    text_column: "caption"
+    text_per_image: 5
+
+  # Flickr30K randomly sampled with 5k with the human generated captions of FM30K
+  flickr30k_pt_human_generated:
+    id: "laicsiifes/flickr30k-pt-br-5k-human-generated"
+    max_length: 25
+    image_column: "image"
+    text_column: "caption"
+    text_per_image: 5
+
+  # Flickr30K randomly sampled with 5k with the human translated captions of FM30K
+  flickr30k_pt_human_translated:
+    id: "laicsiifes/flickr30k-pt-br-5k-human-translated"
+    max_length: 25
+    image_column: "image"
+    text_column: "caption"
+    text_per_image: 5
+
+  # PraCegoVer randomly sampled with 5k
+  pracegover_63k:
+    id: "laicsiifes/pracegover63k-5k"
+    max_length: 70
+    image_column: "image"
+    text_column: "text"
+    text_per_image: 1
+
+turn_off_computer: False

@@ -1,0 +1,20 @@
+pyyaml==6.0.2
+tqdm==4.66.5
+accelerate==1.0.1
+torch==2.6.0
+transformers==4.45.2 # The 3 models work with 4.45.2
+rouge_score==0.1.2
+bert_score==0.3.13
+evaluate==0.4.3
+datasets==3.0.2
+wandb==0.18.5
+python-dotenv==1.0.1
+aac-metrics==0.5.4 # Python 3.9 required
+peft==0.13.2
+bitsandbytes==0.45.2
+# peft==0.10.0         # For ViTucano
+# bitsandbytes==0.43.2 # For ViTucano
+huggingface_hub==0.26.1
+open_clip_torch==2.22 # mandatory
+trl==0.11.4
+openai==1.59.8
