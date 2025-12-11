@@ -1,227 +1,60 @@
 <div align="center">
-  <h1> Transformer-Based Vision Encoder-Decoder (VED) Models for Brazilian Portuguese Image Captioning </h1>
+  <h1> Transformer-Based Vision Models for Brazilian Portuguese Image Captioning </h1>
   <p>By Computational Intelligence and Information Systems Laboratory (LAICSI-IFES)</p>
 </div>
 
 <div align="center">
- <img src='/images/dog-image-captioning.png' width='800'>
+ <img src='/images/illustration-general.jpg' width='800'>
 </div>
 
 <br>
 
-**Open-stuff available in**
-- :floppy_disk: [Flickr30K Portuguese dataset (translated with Google Translator API)](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br)
-- :1st_place_medal: [Swin-DistilBERTimbau (1st place model in Flickr30K Portuguese)](https://huggingface.co/laicsiifes/swin-distilbertimbau)
-- :2nd_place_medal: [Swin-GPorTuguese-2 (2nd place model in Flickr30K Portuguese)](https://huggingface.co/laicsiifes/swin-gportuguese-2)
+## 📌 Project Overview
+This repository hosts a comprehensive collection of research resources for **Brazilian Portuguese Image Captioning**. It encompasses various approaches, including standard Vision Encoder-Decoder (VED) models, Vision-Language Models (VLMs) fine-tuning, Zero-Shot inference with Large Multimodal Models (LMMs), and advanced evaluation metrics.
 
-**or access our** [publicly available collection](https://huggingface.co/collections/laicsiifes/vision-encoder-decoder-brazilian-portuguese-image-captioning-66d6280c9e7dbd3be32d2770)
+Our goal is to provide a robust benchmark and set of tools for the Portuguese Multi-modal community.
 
-**or access the** [project page](https://gabrielmotablima.github.io/ved-transformer-caption-ptbr/index.html).
- 
-### :wrench: To set up the environment, use:
+## 🔬 Research Branches & Modules
+This repository is organized into several independent research modules. Each module contains its own documentation, source code, and specific requirements.
+
+| Module | Description | Link |
+| :--- | :--- | :---: |
+| **VED Models** | The core Vision Encoder-Decoder transformer experiments (e.g., ViT+BERT, Swin+GPT2). Includes seminal work on Portuguese captioning. | [Go to VED](./ved) |
+| **VLM Fine-Tuning** | Fine-tuning pipelines for modern Vision-Language Models (e.g., PaliGemma, Llama-Vision) on Portuguese datasets. | [Go to VLM](./vlm) |
+| **VLM Zero/Few-Shot** | Inference pipelines using large pre-trained models (e.g., GPT-4o, Gemini, Claude) in zero-shot or few-shot settings. | [Go to Zero-Shot](./vlm_zero_shot) |
+| **Metrics Analysis** | Tools for analyzing captioning metrics, including reference-free metrics and correlation studies. | [Go to Metrics](./metrics_analysis) |
+| **Model as Evaluator** | Experiments using Large Language Models (LLMs) as judges to evaluate caption quality. | [Go to Evaulator](./model_as_evaluator) |
+
+## 📂 Available Datasets
+The project utilizes and provides access to key datasets for Portuguese Image Captioning:
+
+- **Flickr30k-PT**: A Portuguese translation of the Flickr30k dataset.
+- **PraCegoVer**: A dataset focused on accessibility with richer descriptions (currently unavailable publicly).
+
+| Dataset Version | HuggingFace ID | Description |
+| :--- | :--- | :--- |
+| **Standard (Translated)** | [`laicsiifes/flickr30k-pt-br`](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br) | Machine translated captions. |
+| **Human Generated** | [`laicsiifes/flickr30k-pt-br-human-generated`](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br-human-generated) | High-quality human written captions. |
+| **Human Translated** | [`laicsiifes/flickr30k-pt-br-human-translated`](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br-human-translated) | Human corrected translations. |
+
+## 🚀 Getting Started
+Since each module operates independently, we recommend navigating to the specific folder of interest (table above) and following the `README.md` instructions there.
+
+ However, for general environment setup that might apply to shared utilities, you can use:
+
 ```bash
 $ chmod +x setup.sh
 $ ./setup.sh
 ```
 
-### :gear: To run the complete train and evaluate, use:
-```bash
-$ python train.py
-```
+## 🏆 Collections & Leaderboard
+- **HuggingFace Collection**: [Vision Encoder-Decoder Brazilian Portuguese Image Captioning](https://huggingface.co/collections/laicsiifes/vision-encoder-decoder-brazilian-portuguese-image-captioning-66d6280c9e7dbd3be32d2770)
+- **Top Models**:
+  - 🥇 [Swin-DistilBERTimbau](https://huggingface.co/laicsiifes/swin-distilbertimbau)
+  - 🥈 [Swin-GPorTuguese-2](https://huggingface.co/laicsiifes/swin-gportuguese-2)
 
-### :gear: To run only the evaluation, use:
-```bash
-$ python eval.py
-```
-
-### :wrench: Don't forget of setting up the training/model attributes in ```config.yml```. An example:
-```yaml
-##########################################################
-################### 1. GENERAL CONFIGS ###################
-##########################################################
-
-config:
-  # model architecture
-  # use the abbreviations of the 4th section of this file
-  encoder: "deit-base-224"
-  decoder: "bert-base"
-
-  # dataset for training and evaluation
-  dataset: "flickr30k_pt_human_generated"
-  # dataset: "flickr30k_pt"
-  # dataset: "pracegover_63k"
-
-  # dataset for testing
-  # it works only for eval.py. It has no effect in train.py, since the model is always
-  # evaluated using the config.dataset
-  test_dataset: "flickr30k_pt_human_generated"
-
-  # dataset from hub
-  dataset_from_hub: True
-
-  # for sentence generation config
-  max_length: 25 # max length of generated sentence | 70 for pracegover-63k | 25 for flickr30k-pt
-  batch_size: 16 # batch size for training and sentence generation | 16 for small models | 8 for bigger models
-
-  # flag to eval.py, if True it evaluate using the model
-  # else it evaluate using the predictions previously saved after training
-  evaluate_from_model: False
-
-  # flag to turn off the computer after the training
-  turn_off_computer: False
-
-
-##########################################################
-################# 2. GENERATION CONFIGS ##################
-##########################################################
-
-generate_args:
-  # for model generate function 
-  num_beams: 5 # Default 5
-  no_repeat_ngram_size: 0 # Default 0
-  early_stopping: False # Default False
-
-
-##########################################################
-################## 3. TRAINING CONFIGS ###################
-##########################################################
-
-training_args:
-  predict_with_generate: True
-  num_train_epochs: 20 # Use 20 for the experiments
-  eval_steps: 200
-  logging_steps: 200
-  per_device_train_batch_size: 16
-  per_device_eval_batch_size: 16
-  learning_rate: 5.0e-5
-  weight_decay: 0.01
-  save_total_limit: 1
-  logging_strategy: "epoch"
-  evaluation_strategy: "epoch"
-  save_strategy: "epoch"
-  load_best_model_at_end: True
-  metric_for_best_model: "rougeL"
-  greater_is_better: True
-  push_to_hub: False
-  fp16: True
-
-callbacks:
-  early_stopping:
-    patience: 20 # Default 1
-    threshold: 0.0 # Default 0.0
-
-
-##########################################################
-########### 4. AVAILABLE ENCODERS AND DECODERS ###########
-##########################################################
-
-encoder:
-  # Vision Tranformers
-  vit-base-224: "google/vit-base-patch16-224"
-  vit-base-224-21k: "google/vit-base-patch16-224-in21k"
-  vit-base-384: "google/vit-base-patch16-384"
-  vit-large-384: "google/vit-large-patch16-384"
-  vit-huge-224-21k: "google/vit-huge-patch14-224-in21k" # SOTA among ViT's
-
-  # SWin Transformers
-  swin-base-224: "microsoft/swin-base-patch4-window7-224"
-  swin-base-224-22k: "microsoft/swin-base-patch4-window7-224-in22k"
-  swin-base-384: "microsoft/swin-base-patch4-window12-384"
-  swin-large-384-22k: "microsoft/swin-large-patch4-window12-384-in22k" # SOTA among SWin's
-
-  # BEiT Transformers
-  beit-base-224: "microsoft/beit-base-patch16-224"
-  beit-base-224-22k: "microsoft/beit-base-patch16-224-pt22k"
-  beit-large-224-22k: "microsoft/beit-large-patch16-224-pt22k-ft22k" # SOTA among BEiT's
-  beit-large-512: "microsoft/beit-large-patch16-512" # SOTA among BEiT's in specific tasks
-  beit-large-640: "microsoft/beit-large-finetuned-ade-640-640" # SOTA among BEiT's in specific tasks
-
-  # DEiT Transformers:
-  deit-base-224: "facebook/deit-base-patch16-224"
-  deit-base-distil-224: "facebook/deit-base-distilled-patch16-224"
-  deit-base-384: "facebook/deit-base-patch16-384"
-  deit-base-distil-384: "facebook/deit-base-distilled-patch16-384" # SOTA among DEiT's
-
-decoder:
-  # Encoder-only Transformers (BERT-like)
-  distilbert-base: "adalbertojunior/distilbert-portuguese-cased"
-  bert-base: "neuralmind/bert-base-portuguese-cased"
-  bert-large: "neuralmind/bert-large-portuguese-cased"
-  roberta-small: "josu/roberta-pt-br"
-
-  # Decoder-only Transformers (GPT-like)
-  gpt2-small: "pierreguillou/gpt2-small-portuguese"
-
-  # Seq-to-Seq Transformers (Seq2Seq Decoder)
-  bart-base: "adalbertojunior/bart-base-portuguese"
-
-
-##########################################################
-############## 5. IMAGE CAPTIONING DATASETS ##############
-##########################################################
-
-dataset:
-  # Flickr30K randomly sampled with 5k
-  flickr30k_pt:
-    id: "laicsiifes/flickr30k-pt-br"
-    max_length: 25
-    image_column: "image"
-    text_column: "caption"
-    text_per_image: 5
-
-  # Flickr30K randomly sampled with 5k with the human generated captions of FM30K
-  flickr30k_pt_human_generated:
-    id: "laicsiifes/flickr30k-pt-br-human-generated"
-    max_length: 25
-    image_column: "image"
-    text_column: "caption"
-    text_per_image: 5
-
-  # Flickr30K randomly sampled with 5k with the human translated captions of FM30K
-  flickr30k_pt_human_translated:
-    id: "laicsiifes/flickr30k-pt-br-human-translated"
-    max_length: 25
-    image_column: "image"
-    text_column: "caption"
-    text_per_image: 5
-
-  # PraCegoVer randomly sampled with 5k (unavailable)
-  pracegover_63k:
-    id: "laicsiifes/pracegover63k-5k"
-    max_length: 70
-    image_column: "image"
-    text_column: "text"
-    text_per_image: 1
-```
-
-### 🗃️ Directory structure:
-```
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   └── pracegover_63k     <- Dataset #PraCegoVer 63k
-│       ├── test.hf        <- Data for testing split.
-│       ├── train.hf       <- Data for training split.
-│       └── validation.hf  <- Data for validation split.
-│
-├── docs               <- A default HTML for docs.
-│
-├── models             <- The models and its artifacts will be saved here.
-│
-├── requirements.txt   <- The requirements file for reproducing the training and evaluation pipelines.
-│
-└── src                <- Source code for use in this project.
-    ├── __init__.py    <- Makes src a Python module
-    │
-    ├── utils          <- Modularization for configuration, splits processing and evaluation metrics.
-    │   ├── config.py
-    │   ├── data_processing.py
-    │   └── metrics.py
-    │
-    ├── eval.py
-    └── train.py
-```
-
-### 📋 BibTex entry and citation info
+## 📋 Citation
+If you use our work, code, or datasets, please cite:
 
 ```bibtex
 @inproceedings{bromonschenkel2024comparative,
