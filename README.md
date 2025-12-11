@@ -25,17 +25,20 @@ This repository is organized into several independent research modules. Each mod
 | **Metrics Analysis** | Tools for analyzing captioning metrics, including reference-free metrics and correlation studies. | [Go to Metrics](./metrics_analysis) |
 | **Model as Evaluator** | Experiments using Large Language Models (LLMs) as judges to evaluate caption quality. | [Go to Evaulator](./model_as_evaluator) |
 
-## 📂 Available Datasets
-The project utilizes and provides access to key datasets for Portuguese Image Captioning:
+## 📂 Available Resources
+The project utilizes and provides access to key resources for Portuguese Image Captioning:
 
-- **Flickr30k-PT**: A Portuguese translation of the Flickr30k dataset.
+- **Flickr-Translated**: A Portuguese translation of the Flickr30k dataset.
+- **Flickr-Native**: A dataset of human generated captions for the Flickr30k dataset.
 - **PraCegoVer**: A dataset focused on accessibility with richer descriptions (currently unavailable publicly).
+- **VLMs Adapters**: A collection of adapters for Vision-Language Models (e.g., PaliGemma, Llama-Vision) on Portuguese datasets.
+- **VED Models**: A collection of Vision Encoder-Decoder models (e.g., ViT+BERT, Swin+GPT2) on Portuguese datasets.
 
-| Dataset Version | HuggingFace ID | Description |
+| Resource Version | HuggingFace ID | Description |
 | :--- | :--- | :--- |
-| **Standard (Translated)** | [`laicsiifes/flickr30k-pt-br`](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br) | Machine translated captions. |
-| **Human Generated** | [`laicsiifes/flickr30k-pt-br-human-generated`](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br-human-generated) | High-quality human written captions. |
-| **Human Translated** | [`laicsiifes/flickr30k-pt-br-human-translated`](https://huggingface.co/datasets/laicsiifes/flickr30k-pt-br-human-translated) | Human corrected translations. |
+| **Datasets for Portuguese Image Captioning** | [`laicsiifes/datasets-for-portuguese-image-captioning`](https://hf.co/collections/laicsiifes/datasets-for-portuguese-image-captioning) | A collection of datasets for Portuguese Image Captioning. |
+| **VEDs for Brazilian Portuguese IC** | [`laicsiifes/veds-for-brazilian-portuguese-ic`](https://hf.co/collections/laicsiifes/veds-for-brazilian-portuguese-ic) | A collection of Vision Encoder-Decoder models (e.g., ViT+BERT, Swin+GPT2) on Portuguese datasets. |
+| **VLMs for Brazilian Portuguese IC** | [`laicsiifes/vlms-for-brazilian-portuguese-ic`](https://hf.co/collections/laicsiifes/vlms-for-brazilian-portuguese-ic) | A collection of Vision-Language Models (e.g., PaliGemma, Llama-Vision) on Portuguese datasets. |
 
 ## 🚀 Getting Started
 Since each module operates independently, we recommend navigating to the specific folder of interest (table above) and following the `README.md` instructions there.
@@ -48,10 +51,10 @@ $ ./setup.sh
 ```
 
 ## 🏆 Collections & Leaderboard
-- **HuggingFace Collection**: [Vision Encoder-Decoder Brazilian Portuguese Image Captioning](https://huggingface.co/collections/laicsiifes/vision-encoder-decoder-brazilian-portuguese-image-captioning-66d6280c9e7dbd3be32d2770)
+- **HuggingFace Collection**: [Vision Encoder-Decoder Brazilian Portuguese Image Captioning](https://hf.co/collections/laicsiifes/veds-for-brazilian-portuguese-ic)
 - **Top Models**:
-  - 🥇 [Swin-DistilBERTimbau](https://huggingface.co/laicsiifes/swin-distilbertimbau)
-  - 🥈 [Swin-GPorTuguese-2](https://huggingface.co/laicsiifes/swin-gportuguese-2)
+  - 🥇 [Swin-DistilBERTimbau](https://hf.co/laicsiifes/swin-distilbertimbau)
+  - 🥈 [Swin-GPorTuguese-2](https://hf.co/laicsiifes/swin-gportuguese-2)
 
 ## 📋 Citation
 If you use our work, code, or datasets, please cite:
