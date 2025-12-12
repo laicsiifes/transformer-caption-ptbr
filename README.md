@@ -23,7 +23,7 @@ This repository is organized into several independent research modules. Each mod
 | **VLM Fine-Tuning** | Fine-tuning pipelines for modern Vision-Language Models (e.g., PaliGemma, Llama-Vision) on Portuguese datasets. | [Go to VLM](./vlm) |
 | **VLM Zero/Few-Shot** | Inference pipelines using large pre-trained models (e.g., GPT-4o, Gemini, Claude) in zero-shot or few-shot settings. | [Go to Zero-Shot](./vlm_zero_shot) |
 | **Metrics Analysis** | Tools for analyzing captioning metrics, including reference-free metrics and correlation studies. | [Go to Metrics](./metrics_analysis) |
-| **Model as Evaluator** | Experiments using Large Language Models (LLMs) as judges to evaluate caption quality. | [Go to Evaulator](./model_as_evaluator) |
+| **Model as Evaluator (in progress)** | Experiments using Large Language Models (LLMs) as judges to evaluate caption quality. | [Go to Evaulator](./model_as_evaluator) |
 
 ## 📂 Available Resources
 The project utilizes and provides access to key resources for Portuguese Image Captioning:
