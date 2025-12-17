@@ -18,3 +18,23 @@ huggingface_hub==0.26.1
 open_clip_torch==2.22 # mandatory
 trl==0.11.4
 openai==1.59.8
+
+# Setting used for RTX 5090 / CUDA 12.8 / PyTorch 2.8
+# pyyaml==6.0.3
+# tqdm==4.67.1
+# accelerate==1.12.0
+# transformers==4.57.3
+# hf_transfer==0.1.9
+# rouge_score==0.1.2
+# bert_score==0.3.13
+# evaluate==0.4.6
+# datasets==4.4.1
+# wandb==0.23.1
+# python-dotenv==1.2.1
+# aac-metrics==0.6.0
+# peft==0.18.0
+# bitsandbytes==0.49.0
+# huggingface_hub==0.36.0
+# open_clip_torch==2.22
+# trl==0.26.1
+# openai==2.12.0
