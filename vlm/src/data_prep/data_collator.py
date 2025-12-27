@@ -578,7 +578,7 @@ class DataCollatorForGeneration(VLMsDataCollator):
             add_generation_prompt=True
         )
         return self.processor(
-            text=f'<|user|>\n<|image_1|>\n{self.question}<|end|>\n<|assistant|>\n',
+            text=text_prompt,
             images=[example["image"]],
             return_tensors='pt'
         ).to(self.device)
