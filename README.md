@@ -20,8 +20,8 @@ This repository is organized into several independent research modules. Each mod
 | Module | Description | Link |
 | :--- | :--- | :---: |
 | **VED Models** | The core Vision Encoder-Decoder transformer experiments (e.g., ViT+BERT, Swin+GPT2). Includes seminal work on Portuguese captioning. | [Go to VED](./ved) |
-| **VLM Fine-Tuning** | Fine-tuning pipelines for modern Vision-Language Models (e.g., PaliGemma, Llama-Vision) on Portuguese datasets. | [Go to VLM](./vlm) |
-| **VLM Zero/Few-Shot** | Inference pipelines using large pre-trained models (e.g., GPT-4o, Gemini, Claude) in zero-shot or few-shot settings. | [Go to Zero-Shot](./vlm_zero_shot) |
+| **VLM Fine-Tuning** | Fine-tuning pipelines for modern Vision-Language Models (e.g., ViTucano, Llama Vision) on Portuguese datasets. | [Go to VLM](./vlm) |
+| **VLM Zero/Few-Shot** | Inference pipelines using large pre-trained models (e.g., GPT-4o, Phi-3 Vision) in zero-shot or few-shot settings. | [Go to Zero-Shot](./vlm_zero_shot) |
 | **Metrics Analysis** | Tools for analyzing captioning metrics, including reference-free metrics and correlation studies. | [Go to Metrics](./metrics_analysis) |
 | **Model as Evaluator (in progress)** | Experiments using Large Language Models (LLMs) as judges to evaluate caption quality. | [Go to Evaulator](./model_as_evaluator) |
 
@@ -29,7 +29,7 @@ This repository is organized into several independent research modules. Each mod
 The project utilizes and provides access to key resources for Portuguese Image Captioning:
 
 - **Flickr-Translated**: A Portuguese translation of the Flickr30k dataset.
-- **Flickr-Native**: A dataset of human generated captions for the Flickr30k dataset.
+- **Flickr-Native**: A dataset of human-generated captions for the Flickr30k dataset.
 - **PraCegoVer**: A dataset focused on accessibility with richer descriptions (currently unavailable publicly).
 - **VLMs Adapters**: A collection of adapters for Vision-Language Models (e.g., PaliGemma, Llama-Vision) on Portuguese datasets.
 - **VED Models**: A collection of Vision Encoder-Decoder models (e.g., ViT+BERT, Swin+GPT2) on Portuguese datasets.
@@ -69,3 +69,4 @@ If you use our work, code, or datasets, please cite:
   organization={IEEE}
 }
 ```
+Remaining publications for VLMs coming soon.
