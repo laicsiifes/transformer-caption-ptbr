@@ -69,4 +69,12 @@ If you use our work, code, or datasets, please cite:
   organization={IEEE}
 }
 ```
-Remaining publications for VLMs coming soon.
+
+```bibtex
+@article{bromonschenkel2026brazilian,
+  title={Brazilian Portuguese Image Captioning with Transformers: A Study on Cross-Native-Translated Dataset},
+  author={Bromonschenkel, Gabriel and Koerich, Alessandro L and Paix{\~a}o, Thiago M and de Oliveira, Hil{\'a}rio Tomaz Alves},
+  journal={arXiv preprint arXiv:2602.00393},
+  year={2026}
+}
+```
