@@ -224,12 +224,10 @@ dataset:
 ### 📋 BibTex entry and citation info
 
 ```bibtex
-@inproceedings{bromonschenkel2024comparative,
-  title={A Comparative Evaluation of Transformer-Based Vision Encoder-Decoder Models for Brazilian Portuguese Image Captioning},
-  author={Bromonschenkel, Gabriel and Oliveira, Hil{\'a}rio and Paix{\~a}o, Thiago M},
-  booktitle={2024 37th SIBGRAPI Conference on Graphics, Patterns and Images (SIBGRAPI)},
-  pages={1--6},
-  year={2024},
-  organization={IEEE}
+@article{bromonschenkel2026brazilian,
+  title={Brazilian Portuguese Image Captioning with Transformers: A Study on Cross-Native-Translated Dataset},
+  author={Bromonschenkel, Gabriel and Koerich, Alessandro L and Paix{\~a}o, Thiago M and de Oliveira, Hil{\'a}rio Tomaz Alves},
+  journal={arXiv preprint arXiv:2602.00393},
+  year={2026}
 }
 ```
